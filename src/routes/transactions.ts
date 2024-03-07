@@ -2,10 +2,15 @@ import { FastifyInstance } from "fastify";
 import crypto, { randomUUID } from "node:crypto";
 import { knex } from "../database";
 import { z } from "zod";
-import { get } from "node:http";
 import { checkSessionIdExists } from "../middlewares/check-session-id-exists";
+import { request } from "node:http";
 
 export async function transactionsRoutes(app: FastifyInstance) {
+  
+  // app.addHook('preHandler', async (request, reply) => {
+  //   console.log(`[${request.method}] ${request.url}`)
+  // }) 
+
   app.get(
     "/",
     {
@@ -77,7 +82,7 @@ export async function transactionsRoutes(app: FastifyInstance) {
       request.body
     );
 
-    let sessionId = request.cookies.session_id;
+    let sessionId = request.cookies.sessionId;
 
     if (!sessionId) {
       sessionId = randomUUID();
