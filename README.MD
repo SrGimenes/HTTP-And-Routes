@@ -12,3 +12,4 @@
 - [x] O usuário só pode visualizar transações o qual ele criou;
 
 - Cookies <-> Formas da gente manter contexto entre requisição
+- Realizar o desafio proposto
